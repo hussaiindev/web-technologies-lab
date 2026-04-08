@@ -1,2 +1,71 @@
-C:\Users\hussa\OneDrive\Desktop\Web Tech. Task\Lab 1\index.html
-C:\Users\hussa\OneDrive\Desktop\Web Tech. Task\Lab 1\index2.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+
+<form>
+    Username:
+    <input type="text" name="username"> <br><br>
+
+    Password:
+    <input type="password" name="password"> <br><br>
+
+    Email:
+    <input type="email" name="email"> <br><br>
+
+    Gender:
+    <input type="radio" name="gender" value="male"> Male
+    <input type="radio" name="gender" value="female"> Female <br><br>
+
+    DOB:
+    <input type="date" name="dob"> <br><br>
+
+    Address:
+    <input type="text" name="address"> <br><br>
+
+    Degree:
+    <input type="radio" name="degree" value="cs"> CS
+    <input type="radio" name="degree" value="se"> SE <br><br>
+
+    Courses:
+    <input type="checkbox" name="course" value="ai"> AI
+    <input type="checkbox" name="course" value="se"> SE
+    <input type="checkbox" name="course" value="os"> OS
+    <input type="checkbox" name="course" value="ml"> ML <br><br>
+
+    Total Credit Hours:
+    <input type="text" value="12" readonly> <br><br>
+
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Layout Fix</title>
+</head>
+<body>
+
+  <!-- Left Section -->
+  <div style="width: 384px; height: 720px; background-color: rgb(14, 60, 100); float: left;"></div>
+
+  <!-- Right Section -->
+  <div style="width: 256px; height: 720px; background-color: darkseagreen; float: right;"></div>
+
+  <!-- Middle Section -->
+  <div style="margin-left: 384px; margin-right: 256px; height: 720px; background-color: black;">
+  </div>
+
+
+
+</body>
+</html>
