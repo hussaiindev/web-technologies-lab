@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShopNest – Products</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <style>
+    :root { --sn-primary: #0b1f4b; --sn-accent: #e8531d; }
+    body { font-family: 'Segoe UI', sans-serif; background: #f8f9fa; }
+    .navbar-brand span { color: var(--sn-accent); }
+    .navbar .nav-link.active { color: var(--sn-accent) !important; font-weight: 600; }
+    .product-card { transition: transform .2s, box-shadow .2s; }
+    .product-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,.12); }
+    footer { background: var(--sn-primary); }
+    .filter-sidebar .form-check-label { font-size: .9rem; }
+    .stock-bar { height: 6px; border-radius: 3px; }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR (same on every page) -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold fs-4" href="index.html">
+        <i class="bi bi-shop-window me-1"></i>Shop<span>Nest</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house-door me-1"></i>Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="products.html"><i class="bi bi-grid me-1"></i>Products</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"><i class="bi bi-tag me-1"></i>Categories</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="products.html">Laptops</a></li>
+              <li><a class="dropdown-item" href="products.html">Smartphones</a></li>
+              <li><a class="dropdown-item" href="products.html">Accessories</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <li><a class="dropdown-item" href="products.html">All Products</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="orders.html"><i class="bi bi-receipt me-1"></i>Orders</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html"><i class="bi bi-envelope me-1"></i>Contact</a></li>
+        </ul>
+        <form class="d-flex me-3" role="search">
+          <input class="form-control form-control-sm me-2" type="search" placeholder="Search products…" />
+          <button class="btn btn-sm btn-outline-light" type="submit"><i class="bi bi-search"></i></button>
+        </form>
+        <a href="cart.html" class="btn btn-outline-warning btn-sm position-relative me-2">
+          <i class="bi bi-cart3"></i>
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">3</span>
+        </a>
+        <a href="checkout.html" class="btn btn-sm btn-warning text-dark fw-semibold">Checkout</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container py-4">
+
+    <!-- ============================================================
+         COMPONENT: BREADCRUMB — shows user's location in the site
+         Bootstrap concept: aria-current="page" marks the active item
+         ============================================================ -->
+    <nav aria-label="breadcrumb" class="mb-3">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Products</li>
+      </ol>
+    </nav>
+
+    <div class="row g-4">
+
+      <!-- ============================================================
+           SIDEBAR — Filter panel using FORM components
+           ============================================================ -->
+      <div class="col-lg-3">
+        <div class="card shadow-sm border-0">
+          <div class="card-header bg-dark text-white fw-semibold">
+            <i class="bi bi-funnel me-2"></i>Filter Products
+          </div>
+          <div class="card-body filter-sidebar">
+
+            <!-- FORM: Select / Dropdown -->
+            <h6 class="fw-semibold text-uppercase small text-muted mb-2">Sort By</h6>
+            <select class="form-select form-select-sm mb-3">
+              <option>Featured</option>
+              <option>Price: Low to High</option>
+              <option>Price: High to Low</option>
+              <option>Newest First</option>
+              <option>Best Rated</option>
+            </select>
+
+            <!-- FORM: Range input -->
+            <h6 class="fw-semibold text-uppercase small text-muted mb-2">Price Range</h6>
+            <input type="range" class="form-range mb-1" min="0" max="2000" value="1000" />
+            <div class="d-flex justify-content-between small text-muted mb-3">
+              <span>$0</span><span>$1,000</span><span>$2,000</span>
+            </div>
+
+            <!-- FORM: Checkboxes -->
+            <h6 class="fw-semibold text-uppercase small text-muted mb-2">Category</h6>
+            <div class="form-check mb-1">
+              <input class="form-check-input" type="checkbox" id="cat1" checked />
+              <label class="form-check-label" for="cat1">Laptops <span class="badge bg-secondary ms-1">24</span></label>
+            </div>
+            <div class="form-check mb-1">
+              <input class="form-check-input" type="checkbox" id="cat2" checked />
+              <label class="form-check-label" for="cat2">Smartphones <span class="badge bg-secondary ms-1">38</span></label>
+            </div>
+            <div class="form-check mb-1">
+              <input class="form-check-input" type="checkbox" id="cat3" />
+              <label class="form-check-label" for="cat3">Tablets <span class="badge bg-secondary ms-1">12</span></label>
+            </div>
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="checkbox" id="cat4" />
+              <label class="form-check-label" for="cat4">Accessories <span class="badge bg-secondary ms-1">56</span></label>
+            </div>
+
+            <!-- FORM: Radio buttons -->
+            <h6 class="fw-semibold text-uppercase small text-muted mb-2">Brand</h6>
+            <div class="form-check mb-1">
+              <input class="form-check-input" type="radio" name="brand" id="b1" checked />
+              <label class="form-check-label" for="b1">All Brands</label>
+            </div>
+            <div class="form-check mb-1">
+              <input class="form-check-input" type="radio" name="brand" id="b2" />
+              <label class="form-check-label" for="b2">Apple</label>
+            </div>
+            <div class="form-check mb-1">
+              <input class="form-check-input" type="radio" name="brand" id="b3" />
+              <label class="form-check-label" for="b3">Samsung</label>
+            </div>
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="radio" name="brand" id="b4" />
+              <label class="form-check-label" for="b4">Dell</label>
+            </div>
+
+            <button class="btn btn-dark btn-sm w-100">
+              <i class="bi bi-funnel-fill me-1"></i>Apply Filters
+            </button>
+          </div>
+        </div>
+
+        <!-- ============================================================
+             INVENTORY STOCK PANEL — progress bars per category
+             COMPONENT: PROGRESS BAR
+             ============================================================ -->
+        <div class="card shadow-sm border-0 mt-3">
+          <div class="card-header bg-dark text-white fw-semibold">
+            <i class="bi bi-bar-chart me-2"></i>Inventory Status
+          </div>
+          <div class="card-body">
+            <p class="small text-muted mb-3">Stock levels across categories</p>
+            <p class="small fw-semibold mb-1">Laptops <span class="float-end text-muted">72%</span></p>
+            <div class="progress mb-3" style="height:8px">
+              <div class="progress-bar bg-success" style="width:72%"></div>
+            </div>
+            <p class="small fw-semibold mb-1">Smartphones <span class="float-end text-muted">45%</span></p>
+            <div class="progress mb-3" style="height:8px">
+              <div class="progress-bar bg-warning" style="width:45%"></div>
+            </div>
+            <p class="small fw-semibold mb-1">Accessories <span class="float-end text-muted">88%</span></p>
+            <div class="progress mb-3" style="height:8px">
+              <div class="progress-bar bg-info" style="width:88%"></div>
+            </div>
+            <p class="small fw-semibold mb-1">Tablets <span class="float-end text-danger">12%</span></p>
+            <div class="progress mb-1" style="height:8px">
+              <div class="progress-bar bg-danger" style="width:12%"></div>
+            </div>
+            <p class="small text-danger mt-1"><i class="bi bi-exclamation-triangle me-1"></i>Low stock — reorder soon</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================
+           MAIN PRODUCT GRID
+           ============================================================ -->
+      <div class="col-lg-9">
+
+        <!-- Toolbar row -->
+        <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+          <p class="mb-0 text-muted small">Showing <strong>12</strong> of <strong>130</strong> products</p>
+          <div class="d-flex gap-2">
+            <button class="btn btn-sm btn-outline-secondary active"><i class="bi bi-grid-3x3-gap"></i></button>
+            <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-list-ul"></i></button>
+          </div>
+        </div>
+
+        <!-- Product Cards Grid -->
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 mb-4">
+
+          <!-- Product items — 6 cards -->
+          <!-- Card 1 -->
+          <div class="col">
+            <div class="card h-100 product-card border-0 shadow-sm">
+              <div class="text-center pt-3" style="font-size:3.5rem">💻</div>
+              <div class="card-body">
+                <span class="badge bg-danger mb-1">-18%</span>
+                <span class="badge bg-success mb-1">In Stock</span>
+                <h6 class="card-title mt-1">ProBook Laptop 15"</h6>
+                <p class="card-text text-muted small">Intel i7 · 16GB · 512GB SSD</p>
+                <div class="text-warning small mb-1">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-half"></i>
+                  <span class="text-muted ms-1">(142)</span>
+                </div>
+                <p class="fw-bold mb-0">$899 <del class="text-muted small fw-normal">$1,099</del></p>
+              </div>
+              <div class="card-footer bg-white border-0 d-flex gap-2 pb-3">
+                <a href="product-detail.html" class="btn btn-primary btn-sm flex-fill">View</a>
+                <button class="btn btn-outline-danger btn-sm"><i class="bi bi-heart"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="col">
+            <div class="card h-100 product-card border-0 shadow-sm">
+              <div class="text-center pt-3" style="font-size:3.5rem">📱</div>
+              <div class="card-body">
+                <span class="badge bg-primary mb-1">New</span>
+                <h6 class="card-title mt-1">iPhone 16 Pro</h6>
+                <p class="card-text text-muted small">A18 Chip · 6.3" OLED · 256GB</p>
+                <div class="text-warning small mb-1">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <span class="text-muted ms-1">(318)</span>
+                </div>
+                <p class="fw-bold mb-0">$1,099</p>
+              </div>
+              <div class="card-footer bg-white border-0 d-flex gap-2 pb-3">
+                <a href="product-detail.html" class="btn btn-primary btn-sm flex-fill">View</a>
+                <button class="btn btn-outline-danger btn-sm"><i class="bi bi-heart"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="col">
+            <div class="card h-100 product-card border-0 shadow-sm">
+              <div class="text-center pt-3" style="font-size:3.5rem">🎧</div>
+              <div class="card-body">
+                <span class="badge bg-warning text-dark mb-1">Sale</span>
+                <h6 class="card-title mt-1">Sony WH-1000XM6</h6>
+                <p class="card-text text-muted small">ANC · 40h battery · Hi-Res</p>
+                <div class="text-warning small mb-1">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star"></i>
+                  <span class="text-muted ms-1">(89)</span>
+                </div>
+                <p class="fw-bold mb-0">$279 <del class="text-muted small fw-normal">$349</del></p>
+              </div>
+              <div class="card-footer bg-white border-0 d-flex gap-2 pb-3">
+                <a href="product-detail.html" class="btn btn-primary btn-sm flex-fill">View</a>
+                <button class="btn btn-outline-danger btn-sm"><i class="bi bi-heart"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="col">
+            <div class="card h-100 product-card border-0 shadow-sm">
+              <div class="text-center pt-3" style="font-size:3.5rem">🖥️</div>
+              <div class="card-body">
+                <span class="badge bg-success mb-1">In Stock</span>
+                <h6 class="card-title mt-1">Dell 27" 4K Monitor</h6>
+                <p class="card-text text-muted small">IPS · 144Hz · USB-C</p>
+                <div class="text-warning small mb-1">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-half"></i>
+                  <span class="text-muted ms-1">(201)</span>
+                </div>
+                <p class="fw-bold mb-0">$549</p>
+              </div>
+              <div class="card-footer bg-white border-0 d-flex gap-2 pb-3">
+                <a href="product-detail.html" class="btn btn-primary btn-sm flex-fill">View</a>
+                <button class="btn btn-outline-danger btn-sm"><i class="bi bi-heart"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="col">
+            <div class="card h-100 product-card border-0 shadow-sm">
+              <div class="text-center pt-3" style="font-size:3.5rem">⌚</div>
+              <div class="card-body">
+                <span class="badge bg-secondary mb-1">Limited</span>
+                <h6 class="card-title mt-1">Apple Watch Ultra 2</h6>
+                <p class="card-text text-muted small">49mm · GPS+LTE · Titanium</p>
+                <div class="text-warning small mb-1">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <span class="text-muted ms-1">(54)</span>
+                </div>
+                <p class="fw-bold mb-0">$799</p>
+              </div>
+              <div class="card-footer bg-white border-0 d-flex gap-2 pb-3">
+                <a href="product-detail.html" class="btn btn-primary btn-sm flex-fill">View</a>
+                <button class="btn btn-outline-danger btn-sm"><i class="bi bi-heart"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="col">
+            <div class="card h-100 product-card border-0 shadow-sm">
+              <div class="text-center pt-3" style="font-size:3.5rem">📷</div>
+              <div class="card-body">
+                <span class="badge bg-danger mb-1">Only 3 left</span>
+                <h6 class="card-title mt-1">Sony A7 IV Camera</h6>
+                <p class="card-text text-muted small">33MP Full-frame · 4K · Wi-Fi</p>
+                <div class="text-warning small mb-1">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star"></i>
+                  <span class="text-muted ms-1">(76)</span>
+                </div>
+                <p class="fw-bold mb-0">$2,499</p>
+              </div>
+              <div class="card-footer bg-white border-0 d-flex gap-2 pb-3">
+                <a href="product-detail.html" class="btn btn-primary btn-sm flex-fill">View</a>
+                <button class="btn btn-outline-danger btn-sm"><i class="bi bi-heart"></i></button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ============================================================
+             COMPONENT: PAGINATION
+             Bootstrap concept: aria-label on nav for accessibility
+             ============================================================ -->
+        <nav aria-label="Product page navigation">
+          <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+              <a class="page-link" href="#"><i class="bi bi-chevron-left"></i></a>
+            </li>
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">4</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#"><i class="bi bi-chevron-right"></i></a>
+            </li>
+          </ul>
+        </nav>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="text-white py-4 mt-4">
+    <div class="container text-center">
+      <p class="text-white-50 small mb-0">&copy; 2025 ShopNest. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

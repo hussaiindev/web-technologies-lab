@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- BOOTSTRAP CONCEPT: viewport meta is required for responsive behaviour -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShopNest – Home</title>
+
+  <!-- Bootstrap 5 CSS (CDN) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <!-- Custom CSS on top of Bootstrap -->
+  <style>
+    :root {
+      --sn-primary: #0b1f4b;
+      --sn-accent:  #e8531d;
+    }
+    body { font-family: 'Segoe UI', sans-serif; }
+
+    /* Navbar brand colour override */
+    .navbar-brand span { color: var(--sn-accent); }
+
+    /* Hero carousel text */
+    .carousel-caption h2 { font-size: 2.4rem; font-weight: 700; }
+
+    /* Custom card hover */
+    .product-card { transition: transform .2s, box-shadow .2s; }
+    .product-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,.12); }
+
+    /* Footer */
+    footer { background: var(--sn-primary); }
+
+    /* Active nav link indicator */
+    .navbar .nav-link.active { color: var(--sn-accent) !important; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       COMPONENT 1 — NAVBAR (with dropdown + offcanvas mobile menu)
+       Bootstrap concept: navbar-expand-lg collapses below lg breakpoint
+       ============================================================ -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
+    <div class="container">
+
+      <!-- Brand / Logo -->
+      <a class="navbar-brand fw-bold fs-4" href="index.html">
+        <i class="bi bi-shop-window me-1"></i>Shop<span>Nest</span>
+      </a>
+
+      <!-- Mobile toggler button — shows hamburger icon on small screens -->
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Collapsible nav links -->
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">
+              <i class="bi bi-house-door me-1"></i>Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="products.html">
+              <i class="bi bi-grid me-1"></i>Products
+            </a>
+          </li>
+          <!-- COMPONENT: Dropdown inside Navbar -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+              <i class="bi bi-tag me-1"></i>Categories
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="products.html">Laptops</a></li>
+              <li><a class="dropdown-item" href="products.html">Smartphones</a></li>
+              <li><a class="dropdown-item" href="products.html">Accessories</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <li><a class="dropdown-item" href="products.html">All Products</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="orders.html">
+              <i class="bi bi-receipt me-1"></i>Orders
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">
+              <i class="bi bi-envelope me-1"></i>Contact
+            </a>
+          </li>
+        </ul>
+
+        <!-- Search bar in navbar -->
+        <form class="d-flex me-3" role="search">
+          <input class="form-control form-control-sm me-2" type="search" placeholder="Search products…" />
+          <button class="btn btn-sm btn-outline-light" type="submit">
+            <i class="bi bi-search"></i>
+          </button>
+        </form>
+
+        <!-- Cart icon with badge -->
+        <a href="cart.html" class="btn btn-outline-warning btn-sm position-relative me-2">
+          <i class="bi bi-cart3"></i>
+          <!-- COMPONENT: BADGE -->
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            3
+          </span>
+        </a>
+
+        <a href="checkout.html" class="btn btn-sm btn-warning text-dark fw-semibold">
+          Checkout
+        </a>
+      </div>
+    </div>
+  </nav>
+  <!-- END NAVBAR -->
+
+
+  <!-- ============================================================
+       COMPONENT 2 — CAROUSEL (Hero slider)
+       Bootstrap concept: data-bs-ride="carousel" auto-plays it
+       ============================================================ -->
+  <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+
+    <!-- Indicators (dots at bottom) -->
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+    </div>
+
+    <div class="carousel-inner">
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+        <svg class="d-block w-100" height="420" xmlns="http://www.w3.org/2000/svg" style="background:#0b1f4b">
+          <text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" fill="#ffffff" font-size="80">💻</text>
+        </svg>
+        <div class="carousel-caption d-none d-md-block">
+          <h2 class="fw-bold">New Arrivals — Laptops 2025</h2>
+          <p class="lead">Power meets portability. Starting from $499.</p>
+          <a href="products.html" class="btn btn-warning btn-lg px-4">Shop Now</a>
+        </div>
+      </div>
+      <!-- Slide 2 -->
+      <div class="carousel-item">
+        <svg class="d-block w-100" height="420" xmlns="http://www.w3.org/2000/svg" style="background:#1a3a6b">
+          <text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" fill="#ffffff" font-size="80">📱</text>
+        </svg>
+        <div class="carousel-caption d-none d-md-block">
+          <h2 class="fw-bold">Smartphones — Best Deals</h2>
+          <p class="lead">Top brands, unbeatable prices.</p>
+          <a href="products.html" class="btn btn-warning btn-lg px-4">Explore</a>
+        </div>
+      </div>
+      <!-- Slide 3 -->
+      <div class="carousel-item">
+        <svg class="d-block w-100" height="420" xmlns="http://www.w3.org/2000/svg" style="background:#e8531d">
+          <text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" fill="#ffffff" font-size="80">🎧</text>
+        </svg>
+        <div class="carousel-caption d-none d-md-block">
+          <h2 class="fw-bold">Accessories Sale — Up to 40% Off</h2>
+          <p class="lead">Headphones, chargers, cases and more.</p>
+          <a href="products.html" class="btn btn-dark btn-lg px-4">View Sale</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Prev / Next controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+  <!-- END CAROUSEL -->
+
+
+  <!-- ============================================================
+       COMPONENT 3 — ALERT (Promo banner)
+       Bootstrap concept: dismissible alert with close button
+       ============================================================ -->
+  <div class="alert alert-warning alert-dismissible fade show mb-0 rounded-0 text-center" role="alert">
+    <i class="bi bi-lightning-charge-fill me-1"></i>
+    <strong>Flash Sale:</strong> Use code <code>NEST20</code> for 20% off on all orders today only!
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+
+
+  <main class="py-5">
+    <div class="container">
+
+      <!-- ============================================================
+           COMPONENT 4 — TYPOGRAPHY (h1–h6, p, lead, display)
+           Bootstrap concept: display-* classes for oversized headings
+           ============================================================ -->
+      <div class="text-center mb-5">
+        <h1 class="display-5 fw-bold text-dark">Welcome to <span style="color:#e8531d">ShopNest</span></h1>
+        <p class="lead text-muted col-lg-7 mx-auto">
+          Your one-stop electronics store. Browse laptops, phones, and accessories
+          from the world's top brands — delivered fast, priced right.
+        </p>
+        <hr class="w-25 mx-auto" />
+        <!-- Typography scale demonstration -->
+        <div class="row mt-3 text-start col-lg-6 mx-auto d-none">
+          <h1>h1. Heading One</h1>
+          <h2>h2. Heading Two</h2>
+          <h3>h3. Heading Three</h3>
+          <h4>h4. Heading Four</h4>
+          <h5>h5. Heading Five</h5>
+          <h6>h6. Heading Six</h6>
+        </div>
+      </div>
+
+      <!-- ============================================================
+           COMPONENT 5 — CARDS (Featured Products)
+           Bootstrap concept: card with card-img-top, card-body, badge
+           ============================================================ -->
+      <h2 class="fw-semibold mb-4">
+        <i class="bi bi-star-fill text-warning me-2"></i>Featured Products
+      </h2>
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 mb-5">
+
+        <!-- Product Card 1 -->
+        <div class="col">
+          <div class="card h-100 product-card border-0 shadow-sm">
+            <div class="text-center pt-3" style="font-size:4rem">💻</div>
+            <div class="card-body">
+              <!-- BADGE inside Card -->
+              <span class="badge bg-danger mb-2">New</span>
+              <h5 class="card-title">ProBook Laptop 15"</h5>
+              <p class="card-text text-muted small">Intel i7, 16GB RAM, 512GB SSD</p>
+              <p class="fw-bold fs-5 text-dark">$899 <del class="text-muted fs-6 fw-normal">$1,099</del></p>
+            </div>
+            <div class="card-footer bg-white border-0 pb-3">
+              <a href="product-detail.html" class="btn btn-primary btn-sm w-100">
+                <i class="bi bi-eye me-1"></i>View Details
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Card 2 -->
+        <div class="col">
+          <div class="card h-100 product-card border-0 shadow-sm">
+            <div class="text-center pt-3" style="font-size:4rem">📱</div>
+            <div class="card-body">
+              <span class="badge bg-success mb-2">In Stock</span>
+              <h5 class="card-title">Galaxy S25 Ultra</h5>
+              <p class="card-text text-muted small">6.8" AMOLED, 200MP Camera</p>
+              <p class="fw-bold fs-5 text-dark">$1,199</p>
+            </div>
+            <div class="card-footer bg-white border-0 pb-3">
+              <a href="product-detail.html" class="btn btn-primary btn-sm w-100">
+                <i class="bi bi-eye me-1"></i>View Details
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Card 3 -->
+        <div class="col">
+          <div class="card h-100 product-card border-0 shadow-sm">
+            <div class="text-center pt-3" style="font-size:4rem">🎧</div>
+            <div class="card-body">
+              <span class="badge bg-warning text-dark mb-2">Sale</span>
+              <h5 class="card-title">SoundMax Pro ANC</h5>
+              <p class="card-text text-muted small">Active Noise Cancelling, 30h battery</p>
+              <p class="fw-bold fs-5 text-dark">$149 <del class="text-muted fs-6 fw-normal">$249</del></p>
+            </div>
+            <div class="card-footer bg-white border-0 pb-3">
+              <a href="product-detail.html" class="btn btn-primary btn-sm w-100">
+                <i class="bi bi-eye me-1"></i>View Details
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Card 4 -->
+        <div class="col">
+          <div class="card h-100 product-card border-0 shadow-sm">
+            <div class="text-center pt-3" style="font-size:4rem">⌨️</div>
+            <div class="card-body">
+              <span class="badge bg-secondary mb-2">Limited</span>
+              <h5 class="card-title">MechKey RGB Keyboard</h5>
+              <p class="card-text text-muted small">Mechanical switches, Full RGB</p>
+              <p class="fw-bold fs-5 text-dark">$79</p>
+            </div>
+            <div class="card-footer bg-white border-0 pb-3">
+              <a href="product-detail.html" class="btn btn-primary btn-sm w-100">
+                <i class="bi bi-eye me-1"></i>View Details
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="text-center mb-5">
+        <a href="products.html" class="btn btn-outline-dark btn-lg px-5">
+          <i class="bi bi-grid me-2"></i>Browse All Products
+        </a>
+      </div>
+
+
+      <!-- ============================================================
+           COMPONENT 6 — LISTS (Why Shop With Us — icon list)
+           Bootstrap concept: list-group with list-group-flush
+           ============================================================ -->
+      <div class="row align-items-center g-5 mb-5">
+        <div class="col-md-6">
+          <h2 class="fw-semibold mb-3">Why Choose ShopNest?</h2>
+          <p class="text-muted">We make buying electronics simple, safe, and fast.</p>
+          <!-- List Group -->
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item px-0">
+              <i class="bi bi-shield-check-fill text-success me-2"></i>
+              <strong>Secure Payments</strong> — 256-bit SSL encryption on every order
+            </li>
+            <li class="list-group-item px-0">
+              <i class="bi bi-truck text-primary me-2"></i>
+              <strong>Fast Delivery</strong> — Free shipping on orders over $50
+            </li>
+            <li class="list-group-item px-0">
+              <i class="bi bi-arrow-counterclockwise text-warning me-2"></i>
+              <strong>30-Day Returns</strong> — No questions asked return policy
+            </li>
+            <li class="list-group-item px-0">
+              <i class="bi bi-headset text-danger me-2"></i>
+              <strong>24/7 Support</strong> — Live chat and email support always available
+            </li>
+            <li class="list-group-item px-0">
+              <i class="bi bi-patch-check-fill text-info me-2"></i>
+              <strong>100% Genuine</strong> — All products are brand-authorised
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-6 text-center">
+          <div class="row g-3">
+            <div class="col-6">
+              <div class="bg-primary text-white rounded-3 p-4">
+                <div style="font-size:2.5rem">📦</div>
+                <h3 class="fw-bold mt-2">50K+</h3>
+                <p class="mb-0 small">Orders Delivered</p>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="bg-success text-white rounded-3 p-4">
+                <div style="font-size:2.5rem">😊</div>
+                <h3 class="fw-bold mt-2">98%</h3>
+                <p class="mb-0 small">Happy Customers</p>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="bg-warning text-dark rounded-3 p-4">
+                <div style="font-size:2.5rem">🛍️</div>
+                <h3 class="fw-bold mt-2">1200+</h3>
+                <p class="mb-0 small">Products Listed</p>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="bg-danger text-white rounded-3 p-4">
+                <div style="font-size:2.5rem">⭐</div>
+                <h3 class="fw-bold mt-2">4.9/5</h3>
+                <p class="mb-0 small">Average Rating</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="bg-dark text-white rounded-3 p-5 text-center">
+        <h3 class="fw-bold mb-2">Stay in the Loop</h3>
+        <p class="text-white-50 mb-3">Subscribe for deals, new arrivals, and tech news.</p>
+        <form class="row justify-content-center g-2">
+          <div class="col-md-5">
+            <input type="email" class="form-control" placeholder="Enter your email" />
+          </div>
+          <div class="col-auto">
+            <button class="btn btn-warning text-dark fw-semibold">
+              <i class="bi bi-bell me-1"></i>Subscribe
+            </button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+
+  <!-- ============================================================
+       FOOTER with nav links, icons, and typography
+       ============================================================ -->
+  <footer class="text-white py-5 mt-4">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <h5 class="fw-bold"><i class="bi bi-shop-window me-1"></i>Shop<span style="color:#e8531d">Nest</span></h5>
+          <p class="text-white-50 small mt-2">
+            Premium electronics at honest prices. Trusted by thousands of customers worldwide.
+          </p>
+          <!-- ICONS — social links -->
+          <div class="d-flex gap-3 mt-3">
+            <a href="#" class="text-white-50 fs-5"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-white-50 fs-5"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="text-white-50 fs-5"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-white-50 fs-5"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <h6 class="fw-semibold text-uppercase mb-3 text-white-50 small">Shop</h6>
+          <ul class="list-unstyled">
+            <li class="mb-1"><a href="products.html" class="text-white-50 text-decoration-none small">Laptops</a></li>
+            <li class="mb-1"><a href="products.html" class="text-white-50 text-decoration-none small">Phones</a></li>
+            <li class="mb-1"><a href="products.html" class="text-white-50 text-decoration-none small">Accessories</a></li>
+            <li class="mb-1"><a href="products.html" class="text-white-50 text-decoration-none small">Deals</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h6 class="fw-semibold text-uppercase mb-3 text-white-50 small">Account</h6>
+          <ul class="list-unstyled">
+            <li class="mb-1"><a href="orders.html" class="text-white-50 text-decoration-none small">My Orders</a></li>
+            <li class="mb-1"><a href="cart.html" class="text-white-50 text-decoration-none small">Cart</a></li>
+            <li class="mb-1"><a href="checkout.html" class="text-white-50 text-decoration-none small">Checkout</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h6 class="fw-semibold text-uppercase mb-3 text-white-50 small">Contact</h6>
+          <p class="text-white-50 small mb-1"><i class="bi bi-geo-alt me-1"></i>123 Tech Avenue, Silicon Valley, CA</p>
+          <p class="text-white-50 small mb-1"><i class="bi bi-telephone me-1"></i>+1 (800) 123-4567</p>
+          <p class="text-white-50 small"><i class="bi bi-envelope me-1"></i>hello@shopnest.com</p>
+        </div>
+      </div>
+      <hr class="border-secondary mt-4" />
+      <p class="text-center text-white-50 small mb-0">
+        &copy; 2025 ShopNest. All rights reserved. |
+        <a href="#" class="text-white-50">Privacy Policy</a> |
+        <a href="#" class="text-white-50">Terms of Service</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle (includes Popper — needed for dropdowns, tooltips, modals) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
