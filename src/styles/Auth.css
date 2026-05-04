@@ -1,0 +1,197 @@
+/* src/styles/AuthPages.css */
+
+* {
+  font-family: 'Inter', sans-serif;
+}
+
+.auth-page {
+  background-color: #0d0d0d;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px;
+}
+
+/* ── Card wrapper ── */
+.auth-card {
+  background-color: #141414;
+  border: 1px solid #1e1e1e;
+  border-radius: 14px;
+  padding: 40px 36px;
+  width: 100%;
+  max-width: 440px;
+}
+
+/* ── Brand at top ── */
+.auth-brand {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #f0f0f0;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 28px;
+}
+
+.auth-brand span {
+  color: #10B981;
+}
+
+/* ── Heading ── */
+.auth-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #f0f0f0;
+  margin-bottom: 6px;
+  letter-spacing: -0.3px;
+}
+
+.auth-subtitle {
+  font-size: 0.875rem;
+  color: #555555;
+  margin-bottom: 28px;
+}
+
+/* ── Form labels ── */
+.auth-card .form-label {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #888888;
+  margin-bottom: 6px;
+  letter-spacing: 0.2px;
+}
+
+/* ── Inputs ── */
+.auth-card .form-control {
+  background-color: #0d0d0d;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  color: #f0f0f0;
+  font-size: 0.9rem;
+  padding: 10px 14px;
+  transition: border-color 0.2s;
+}
+
+.auth-card .form-control:focus {
+  background-color: #0d0d0d;
+  border-color: #4F46E5;
+  color: #f0f0f0;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+.auth-card .form-control::placeholder {
+  color: #3a3a3a;
+}
+
+/* ── Select dropdown ── */
+.auth-card .form-select {
+  background-color: #0d0d0d;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  color: #f0f0f0;
+  font-size: 0.9rem;
+  padding: 10px 14px;
+  transition: border-color 0.2s;
+}
+
+.auth-card .form-select:focus {
+  background-color: #0d0d0d;
+  border-color: #4F46E5;
+  color: #f0f0f0;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+/* ── Select options ── */
+.auth-card .form-select option {
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+}
+
+/* ── Checkbox ── */
+.auth-card .form-check-input {
+  background-color: #0d0d0d;
+  border-color: #2a2a2a;
+}
+
+.auth-card .form-check-input:checked {
+  background-color: #4F46E5;
+  border-color: #4F46E5;
+}
+
+.auth-card .form-check-label {
+  font-size: 0.82rem;
+  color: #555555;
+}
+
+/* ── Submit button ── */
+.btn-auth {
+  width: 100%;
+  background-color: #4F46E5;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 11px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  margin-top: 6px;
+  transition: background-color 0.2s;
+}
+
+.btn-auth:hover {
+  background-color: #4338CA;
+  color: #ffffff;
+}
+
+/* ── Divider ── */
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 22px 0;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: #1e1e1e;
+}
+
+.auth-divider span {
+  font-size: 0.75rem;
+  color: #333333;
+  white-space: nowrap;
+}
+
+/* ── Bottom switch link ── */
+.auth-switch {
+  text-align: center;
+  font-size: 0.83rem;
+  color: #444444;
+  margin-top: 22px;
+}
+
+.auth-switch a {
+  color: #4F46E5;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.auth-switch a:hover {
+  color: #818cf8;
+}
+
+/* ── Forgot password ── */
+.forgot-link {
+  font-size: 0.78rem;
+  color: #444444;
+  text-decoration: none;
+  float: right;
+  margin-bottom: 6px;
+  transition: color 0.2s;
+}
+
+.forgot-link:hover {
+  color: #4F46E5;
+}
